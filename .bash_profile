@@ -3,7 +3,7 @@
 # This is a good place to create functions that automate some of your tasks such as:
 # - sequentially calling commands
 # - wrapping command calls that have lots of options.
-# - help log into services (db, servers, etc) with the use of the cache array.
+# - help logging into services (db, servers, etc) with the use of the cache array.
 # - recursively call commands on multiple directories.
 #
 # "mk_" is a namespace that I chose to use for all of my functions/variables.
