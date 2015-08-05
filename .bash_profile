@@ -4,7 +4,7 @@
 # - sequentially calling commands
 # - wrapping command calls that have lots of options.
 # - help logging into services (db, servers, etc) with the use of the cache array.
-# - recursively call commands on multiple directories.
+# - recursively calling commands on multiple directories.
 #
 # "mk_" is a namespace that I chose to use for all of my functions/variables.
 # This can be anything.
