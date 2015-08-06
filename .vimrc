@@ -53,7 +53,8 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
 " Taglist - Key Mapping
-nmap <silent> <C-T> :TlistToggle<CR>
+nmap <silent> tt :TlistToggle<CR>
+autocmd BufWritePost * :TlistUpdate
 
 " PHP Documentor - Set Template Dir And Map Keys
 let g:pdv_template_dir = $HOME ."/.vim/bundle/pdv/templates_snip"
