@@ -33,6 +33,10 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 
+" Map Tab Switching
+nmap tl <C-PageDown>
+nmap th <C-PageUp>
+
 " Map Arrow Keys To Split Windows
 nmap <silent> <C-Up> :wincmd k<CR>
 nmap <silent> <C-Down> :wincmd j<CR>
