@@ -28,10 +28,10 @@ else
 fi
 
 echo Installing Plugins
-git clone http://gitlab.tss/front-end/vim.git /tmp/vim
-yes | cp /tmp/vim/vimrc ~/.vimrc && rm -fr /tmp/vim
+#git clone http://gitlab.tss/front-end/vim.git /tmp/vim
+#yes | cp /tmp/vim/vimrc ~/.vimrc && rm -fr /tmp/vim
 
-mkdir -p ~/.vim/bundle
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+#mkdir -p ~/.vim/bundle
+#git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
-vim -E -s -c "source ~/.vimrc" -c PluginInstall -c qa
+#vim -E -s -c "source ~/.vimrc" -c PluginInstall -c qa
