@@ -27,7 +27,7 @@ else
     echo Vim already installed
 fi
 
-echo Installing Plugins
+echo Installing Plugins - Just kidding this needs to be adjusted :p
 #git clone http://gitlab.tss/front-end/vim.git /tmp/vim
 #yes | cp /tmp/vim/vimrc ~/.vimrc && rm -fr /tmp/vim
 
