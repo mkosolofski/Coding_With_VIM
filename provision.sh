@@ -3,7 +3,7 @@ if [ -z "$(vim --version | grep +python)" ]; then
      sudo apt-get remove -y vim
 
      echo Installing dependency packages
-     installPackage python-dev 2.7.9-1
+     sudo apt-get install -y python-dev 2.7.9-1
      sudo apt-get install -y ncurses-dev
 
      echo Downloading Vim
