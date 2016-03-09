@@ -1,37 +1,67 @@
+echo --------------------------------------------------------------
+echo Installing dependency packages for vim
+echo --------------------------------------------------------------
+sudo apt-get install -y python-dev
+sudo apt-get install -y ncurses-dev
+
 if [ -z "$(vim --version | grep +python)" ]; then
-    echo Installing VIM with python support
+     echo --------------------------------------------------------------
+     echo "Removing current version of vim (not compiled with python)"
+     echo --------------------------------------------------------------
      sudo apt-get remove -y vim
 
-     echo Installing dependency packages
-     sudo apt-get install -y python-dev 2.7.9-1
-     sudo apt-get install -y ncurses-dev
-
-     echo Downloading Vim
+     echo --------------------------------------------------------------
+     echo Downloading vim source
+     echo --------------------------------------------------------------
+     rm -fr /tmp/vimSrc
      git clone https://github.com/vim/vim.git /tmp/vimSrc
 
-     echo Compiling Vim with python support
+     echo --------------------------------------------------------------
+     echo Compiling vim with python support
+     echo --------------------------------------------------------------
      curDir=${PWD}
      cd /tmp/vimSrc
-     ./configure --with-features=huge --enable-pythoninterp=yes --with-python-config-dir=/usr/lib/python2.7/config-x86_64-linux-gnu
+     ./configure --with-features=huge --enable-pythoninterp=yes --with-python-config-dir=/usr/lib/python*/config-*
      make
 
-     echo Installing Vim
+     echo --------------------------------------------------------------
+     echo Installing vim
+     echo --------------------------------------------------------------
      sudo make install
      cd $curDir
-
-     rm -fr /tmp/vimSrc
-
+     
      sudo update-alternatives --install "/usr/bin/vim" "vim" "/usr/local/bin/vim" 1
      sudo update-alternatives --install "/usr/bin/vi" "vi" "/usr/local/bin/vim" 1
+
+     echo --------------------------------------------------------------
+     echo Cleaning up install files
+     echo --------------------------------------------------------------
+     rm -fr /tmp/vimSrc
+
 else
-    echo Vim already installed
+    echo Vim already installed with Python support. Skipping vim install.
 fi
 
-echo Installing Plugins - Just kidding this needs to be adjusted :p
-#git clone http://gitlab.tss/front-end/vim.git /tmp/vim
-#yes | cp /tmp/vim/vimrc ~/.vimrc && rm -fr /tmp/vim
+echo --------------------------------------------------------------
+echo Installing CTags to support vim plugins
+echo --------------------------------------------------------------
+sudo apt-get install -y ctags
 
-#mkdir -p ~/.vim/bundle
-#git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+echo --------------------------------------------------------------
+echo Placing .vimrc
+echo --------------------------------------------------------------
+cp "$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"/.vimrc ~/.
 
-#vim -E -s -c "source ~/.vimrc" -c PluginInstall -c qa
+echo --------------------------------------------------------------
+echo Installing Vundle vim plugin
+echo --------------------------------------------------------------
+mkdir -p ~/.vim/bundle
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+
+echo --------------------------------------------------------------
+echo Installing vim plugins with Vundle
+echo --------------------------------------------------------------
+vim -E -s -c "source ~/.vimrc" -c PluginInstall -c qa
+
+echo ""
+echo Done!!!
