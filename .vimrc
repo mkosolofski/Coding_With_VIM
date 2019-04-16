@@ -39,6 +39,11 @@ Bundle 'craigemery/vim-autotag'
 Bundle 'arnaud-lb/vim-php-namespace'
 Plugin 'shawncplus/phpcomplete.vim'
 Plugin 'adoy/vim-php-refactoring-toolbox'
+Plugin 'tpope/tpope-vim-abolish.git'
+Plugin 'mileszs/ack.vim'
+
+Plugin 'vim-scripts/Align'
+Plugin 'vim-scripts/SQLUtilities'
 
 " HTML syntax highlighting
 Bundle 'mitsuhiko/vim-jinja.git'
@@ -115,6 +120,21 @@ function! IPhpInsertUse()
 endfunction
 autocmd FileType php inoremap <Leader>u <Esc>:call IPhpInsertUse()<CR>
 autocmd FileType php noremap <Leader>u :call PhpInsertUse()<CR>
+autocmd FileType php inoremap <Leader>s <Esc>:call PhpSortUse()<CR>
+autocmd FileType php noremap <Leader>s :call PhpSortUse()<CR>
 
 " PHP Complete
 let g:phpcomplete_parse_docblock_comments = 1
+
+" Window Resize Horizontal
+if bufwinnr(1)
+  map + <C-w>><C-w>><C-w>><C-w>>
+  map - <C-w><<C-w><<C-w><<C-w><
+endif
+
+" SQLUFormatter
+vmap <silent>sf        <Plug>SQLUFormatter<CR>
+nmap <silent>scl       <Plug>SQLUCreateColumnList<CR>
+nmap <silent>scd       <Plug>SQLUGetColumnDef<CR>
+nmap <silent>scdt      <Plug>SQLUGetColumnDataType<CR>
+nmap <silent>scp       <Plug>SQLUCreateProcedure<CR>
